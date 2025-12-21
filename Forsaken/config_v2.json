@@ -166,7 +166,7 @@
         },
         {
             "system": "gamate",
-            "command": "../RetroArch.AppImage -L ",
+            "command": "../RetroArch.AppImage -L mame_libretro.so",
             "temp_forever_modes": "TEMP",
             "descompresion_por_sistema": false
         },
