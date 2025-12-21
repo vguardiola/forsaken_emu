@@ -1,26 +1,29 @@
 #!/bin/bash
 
+set -e
+
 downloadList() {
-    if [ ! -d "./Fosaken/lists" ]; then
-        git clone https://github.com/Arley4d/Arley4dBypass.git ./Fosaken/lists
+    if [ ! -d "./Forsaken/lists" ]; then
+        git clone https://github.com/Arley4d/Arley4dBypass.git ./Forsaken/lists
     fi
-    cd ./Fosaken/lists
+    cd ./Forsaken/lists
     git pull
     cd ../../
 }
 
 generateFakeRoms() {
- mkdir -p ./Fosaken/roms
-
- for platform in `ls ./Fosaken/lists`; do
-  mkdir -p ./Fosaken/roms/"${platform%.txt}"
-  readarray -t lines < ./Fosaken/lists/${platform}
-  echo "${platform%.txt}"
-  for game in "${lines[@]}"; do
-    game=$(echo "${game}" | awk -F '=' '{print $1}')
-    touch ./Fosaken/roms/"${platform%.txt}"/"${game}"
-  done
- done
+    mkdir -p ./Forsaken/roms
+    cd ./Forsaken/lists
+    for platform in *.txt; do
+        mkdir -p ../roms/"${platform%.txt}"
+        echo "${platform%.txt}"
+        readarray -t lines < "${platform}"
+        for game in "${lines[@]}"; do
+            game=$(echo "${game}" | awk -F '=' '{print $1}')
+            touch ../roms/"${platform%.txt}"/"${game}"
+        done
+    done
+    cd ../../
 }
 
 downloadEmulators() {
@@ -70,8 +73,21 @@ checkSystemApps() {
 
 checkSystemApps
 downloadList
-downloadEmulators
+
+read -p "Do you want download Emulators? (y/N) " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo
+    echo "Downloading Emulators..."
+    downloadEmulators
+fi
+echo
 read -p "Do you want generate Fake Roms? (y/N) " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo
+    echo "Generating Fake Roms..."
     generateFakeRoms
 fi
+mkdir -p ./Forsaken/roms/TEMP
+mkdir -p ./Forsaken/roms/FOREVER
+cp ./Forsaken/es_systems.xml ~/ES-DE/custom_systems/es_systems.xml
+sed -i 's|ROMDirectory=""|ROMDirectory="~/ES-DE/Emulators/Forsaken/roms"|' ~/ES-DE/settings/es_settings.xml
