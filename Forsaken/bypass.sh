@@ -12,26 +12,21 @@ downloadForeverDir="${romsDir}/FOREVER/${platformName}/"
 url=""
 size=0
 
-
 debug() {
  echo "$1" >> ${logFile}
 }
 
-debug $1 $2 $3
 findGameUrl() {
     data=$(grep "${gameName}" "${bypassDir}/lists/${platformName}.txt");
     url=$(echo ${data} | awk -F'*' '{print $1}' | awk -F'=' '{print $2}');
     url=${url% }
     size=$(echo ${data} | awk -F'*' '{print $2}' | awk -F'=' '{print $2}' | awk '{print $1}');
-    debug $url
 }
 
 existRom() {
-debug "${downloadForeverDir}${gameName}"
     if [ -f "${downloadForeverDir}${gameName}" ]; then
     return 1;
     fi
-debug "${downloadTempDir}${gameName}"
     if [ -f "${downloadTempDir}${gameName}" ]; then
     return 2;
     fi
@@ -41,39 +36,50 @@ debug "${downloadTempDir}${gameName}"
 downloadRom() {
     local romFile="${downloadTempDir}${gameName}";
     mkdir -p "${downloadTempDir}";
-    wget -q --show-progress -O "${romFile}" "${url}";
+    wget --progress=bar:force:noscroll -O "${romFile}" "${url}" 2>&1 | \
+    tr '\r' '\n' | \
+    grep --line-buffered "%" | \
+    sed -u -r 's/.* ([0-9]+)%.* ([0-9.,]+ [KMG]B\/s).*/\1\n# Downloading at \2/' | \
+    zenity --progress --title="Downloading ${gameName}" --auto-close --percentage=0
+    
+    if [ $? -ne 0 ]; then
+        rm -f "${romFile}"
+        exit 1
+    fi
 }
 
 
 runEmulator() {
     local rom=$1
     local romPath=$(dirname "${rom}")
-    debug "7z x \"${rom}\" -o\"${romPath}\""
-    7z x "${rom}" -o"${romPath}"
-    debug $?
-#     debug "${bypassDir}/../RetroArch.AppImage -L fuse_libretro.so \"${rom%zip}cue\""
+    7z x -bsp1 -y "${rom}" -o"${romPath}" | \
+    tr '\r' '\n' | \
+    sed -u -n 's/.*\ \([0-9]\+\)%.*/\1/p' | \
+    zenity --progress --title="Extracting ${gameName}" --auto-close --no-cancel --percentage=0
     ${bypassDir}/../RetroArch.AppImage -L puae2021_libretro.so "${rom}"
+}
+
+askSaveRom() {
+    zenity --question --title="Save Rom" --text="Do you want to save this rom?"
+    if [ $? -eq 0 ]; then
+        mv "${downloadTempDir}${gameName}" "${downloadForeverDir}${gameName}"
+    fi
 }
 
 existRom
 exist=$?
 case $exist in
     1)
-        # runEmulator "${downloadForeverDir}${gameName}"
-        debug "exist on FOREVER"
         runEmulator "${downloadForeverDir}${gameName}"
         ;;
     2)
-        # runEmulator "${downloadTempDir}${gameName}"
-        debug "exist on TEMP"
         runEmulator "${downloadTempDir}${gameName}"
+        askSaveRom
         ;;
     *)
-        debug "No exist"
         findGameUrl
         downloadRom
         runEmulator "${downloadTempDir}${gameName}"
+        askSaveRom
         ;;
 esac
-
-downloadRom

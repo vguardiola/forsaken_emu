@@ -69,6 +69,11 @@ checkSystemApps() {
         echo "RetroArch could not be found, please install it to continue"
         exit 1
     fi
+    #has zenity installed
+    if ! command -v zenity &> /dev/null; then
+        echo "zenity could not be found, please install it to continue"
+        exit 1
+    fi
 }
 
 checkSystemApps
