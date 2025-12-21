@@ -1,0 +1,776 @@
+{
+    "roms_path": "./roms",
+    "listas_path": "./lists",
+    "emulators": [
+        {
+            "system": "3do",
+            "command": "../RetroArch.AppImage -L opera_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "3ds",
+            "command": "../RetroArch.AppImage -L citra_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "amiga1200",
+            "command": "../RetroArch.AppImage -L puae2021_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "amiga500",
+            "command": "../RetroArch.AppImage -L puae2021_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "amigacd32",
+            "command": "../RetroArch.AppImage -L puae2021_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "amigacdtv",
+            "command": "../RetroArch.AppImage -L puae2021_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "amstradcpc",
+            "command": "../RetroArch.AppImage -L cap32_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "arcade",
+            "command": "../RetroArch.AppImage -L mame_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "arduboy",
+            "command": "../RetroArch.AppImage -L arduous_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "atari2600",
+            "command": "../RetroArch.AppImage -L stella2023_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "atari5200",
+            "command": "../RetroArch.AppImage -L a5200_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "atari7800",
+            "command": "../RetroArch.AppImage -L prosystem_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "atari800",
+            "command": "../RetroArch.AppImage -L atari800_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "atarist",
+            "command": "../RetroArch.AppImage -L hatari_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "atomiswave",
+            "command": "../RetroArch.AppImage -L flycast_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "bbcmicro",
+            "command": "../RetroArch.AppImage -L beebem_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "c64",
+            "command": "../RetroArch.AppImage -L vice_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "cdi",
+            "command": "../RetroArch.AppImage -L same_cdi_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "channelf",
+            "command": "../RetroArch.AppImage -L freechannelf_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "colecovision",
+            "command": "../RetroArch.AppImage -L gearcoleco_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "cps1",
+            "command": "../RetroArch.AppImage -L fbneo_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "cps2",
+            "command": "../RetroArch.AppImage -L fbneo_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "cps3",
+            "command": "../RetroArch.AppImage -L fbneo_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "dos",
+            "command": "../RetroArch.AppImage -L dosbox_pure_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "dreamcast",
+            "command": "../RetroArch.AppImage -L flycast_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "easyrpg",
+            "command": "../RetroArch.AppImage -L easyrpg_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "fbneo",
+            "command": "../RetroArch.AppImage -L fbneo_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "gamate",
+            "command": "../RetroArch.AppImage -L ",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "gameandwatch",
+            "command": "../RetroArch.AppImage -L gw_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "gamegear",
+            "command": "../RetroArch.AppImage -L genesis_plus_gx_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "gb",
+            "command": "../RetroArch.AppImage -L gambatte_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "gba",
+            "command": "../RetroArch.AppImage -L mgba_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "gbc",
+            "command": "../RetroArch.AppImage -L gambatte_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "lowresnx",
+            "command": "../RetroArch.AppImage -L lowresnx_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "lutro",
+            "command": "../RetroArch.AppImage -L lutro_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "lynx",
+            "command": "../RetroArch.AppImage -L handy_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "mame",
+            "command": "../RetroArch.AppImage -L mame_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "mastersystem",
+            "command": "../RetroArch.AppImage -L genesis_plus_gx_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "megadrive",
+            "command": "../RetroArch.AppImage -L genesis_plus_gx_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "megaduck",
+            "command": "../RetroArch.AppImage -L sameboy_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "msx1",
+            "command": "../RetroArch.AppImage -L bluemsx_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "msx2",
+            "command": "../RetroArch.AppImage -L bluemsx_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "n64",
+            "command": "../RetroArch.AppImage -L mupen64plus_next_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "nds",
+            "command": "../RetroArch.AppImage -L melonds_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "neogeo",
+            "command": "../RetroArch.AppImage -L fbneo_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "neogeocd",
+            "command": "../RetroArch.AppImage -L neocd_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "nes",
+            "command": "../RetroArch.AppImage -L nestopia_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "ngage",
+            "command": "..\\eka2l1\\eka2l1_qt.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "ngp",
+            "command": "../RetroArch.AppImage -L mednafen_ngp_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "ngpc",
+            "command": "../RetroArch.AppImage -L mednafen_ngp_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "odyssey2",
+            "command": "../RetroArch.AppImage -L o2em_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "pc98",
+            "command": "../RetroArch.AppImage -L np2kai_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "pcengine",
+            "command": "../RetroArch.AppImage -L mednafen_pce_fast_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "pcenginecd",
+            "command": "../RetroArch.AppImage -L mednafen_pce_fast_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "peliculas",
+            "command": "..\\MPC-HC\\mpc-hc64.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "openbor",
+            "command": "..\\openbor\\OpenBOR.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "pico8",
+            "command": "../RetroArch.AppImage -L retro8_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "ps2",
+            "command": [
+                "../RetroArch.AppImage -L pcsx2_libretro.so",
+                "..\\pcsx2\\pcsx2-qt.exe"
+            ],
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "ps3",
+            "command": "..\\rpcs3\\rpcs3.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "psp",
+            "command": "../RetroArch.AppImage -L ppsspp_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "psvita",
+            "command": "..\\vita3k\\Vita3K.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "psx",
+            "command": "../RetroArch.AppImage -L mednafen_psx_hw_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "revistas",
+            "command": "..\\PDF\\pdf.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "satellaview",
+            "command": "../RetroArch.AppImage -L snes9x_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "saturn",
+            "command": "../RetroArch.AppImage -L mednafen_saturn_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "scummvm",
+            "command": "../RetroArch.AppImage -L scummvm_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "sega32x",
+            "command": "../RetroArch.AppImage -L picodrive_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "segacd",
+            "command": "../RetroArch.AppImage -L genesis_plus_gx_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "segastv",
+            "command": "../RetroArch.AppImage -L kronos_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "snes",
+            "command": "../RetroArch.AppImage -L snes9x_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "supervision",
+            "command": "../RetroArch.AppImage -L potator_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "switch",
+            "command": [
+                "..\\citron\\citron.exe",
+                "..\\ryujinx\\Ryujinx.exe"
+            ],
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "uzebox",
+            "command": "../RetroArch.AppImage -L uzem_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "vectrex",
+            "command": "../RetroArch.AppImage -L vecx_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "videopac",
+            "command": "../RetroArch.AppImage -L o2em_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "vircon32",
+            "command": "../RetroArch.AppImage -L vircon32_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "virtualboy",
+            "command": "../RetroArch.AppImage -L mednafen_vb_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "wasm4",
+            "command": "../RetroArch.AppImage -L wasm4_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "wiiu",
+            "command": "../Cemu.AppImage -g",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "wswan",
+            "command": "../RetroArch.AppImage -L mednafen_wswan_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "wswanc",
+            "command": "../RetroArch.AppImage -L mednafen_wswan_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "x68000",
+            "command": "../RetroArch.AppImage -L px68k_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "zxspectrum",
+            "command": "../RetroArch.AppImage -L fuse_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "zx81",
+            "command": "../RetroArch.AppImage -L 81_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "zmachine",
+            "command": "../RetroArch.AppImage -L mojozork_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "xegs",
+            "command": "../RetroArch.AppImage -L atari800_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "xbox360",
+            "command": "..\\xenia\\xenia.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "xbox",
+            "command": "..\\xemu\\xemu.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "flash",
+            "command": "..\\ruffle\\ruffle.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "fpinball",
+            "command": "..\\fpinball\\BAM\\FPLoader.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "jaguar",
+            "command": "../RetroArch.AppImage -L virtualjaguar_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "jaguarcd",
+            "command": "..\\bigpemu\\BigPEmu.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "model2",
+            "command": "..\\m2emulator\\EMULATOR.EXE",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "model3",
+            "command": "..\\supermodel\\Supermodel.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "naomi",
+            "command": "../RetroArch.AppImage -L flycast_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "naomi2",
+            "command": "../RetroArch.AppImage -L flycast_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "fds",
+            "command": "../RetroArch.AppImage -L nestopia_libretro.so",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "apple2",
+            "command": "..\\applewin\\AppleWin.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "fmtowns",
+            "command": "..\\tsugaru\\Tsugaru_CUI.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "gamecube",
+            "command": [
+                "../RetroArch.AppImage -L dolphin_libretro.so",
+                "../Dolphin.AppImage -e"
+            ],
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "ps4",
+            "command": "..\\shadps4\\shadPS4.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "wii",
+            "command": [
+                "../RetroArch.AppImage -L dolphin_libretro.so",
+                "../Dolphin.AppImage -e"
+            ],
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "wiiware",
+            "command": [
+                "../RetroArch.AppImage -L dolphin_libretro.so",
+                "../Dolphin.AppImage -e"
+            ],
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "teknoparrot",
+            "command": "..\\teknoparrot\\TeknoParrotUi.exe",
+            "temp_forever_modes": "TEMP",
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "atarijaguar",
+            "command": "../RetroArch.AppImage -L virtualjaguar_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "atarilynx",
+            "command": "../RetroArch.AppImage -L handy_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "atarixe",
+            "command": "../RetroArch.AppImage -L atari800_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "cdimono",
+            "command": "../RetroArch.AppImage -L same_cdi_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": null
+        },
+        {
+            "system": "cdtv",
+            "command": "../RetroArch.AppImage -L puae_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "cps",
+            "command": "../RetroArch.AppImage -L fbneo_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "gc",
+            "command": [
+                "../RetroArch.AppImage -L dolphin_libretro.so",
+                "../Dolphin.AppImage -e"
+            ],
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "megacd",
+            "command": "../RetroArch.AppImage -L genesis_plus_gx_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "msx",
+            "command": "../RetroArch.AppImage -L bluemsx_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "n3ds",
+            "command": "../RetroArch.AppImage -L citra_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "stv",
+            "command": "../RetroArch.AppImage -L kronos_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "wonderswan",
+            "command": "../RetroArch.AppImage -L mednafen_wswan_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "wonderswancolor",
+            "command": "../RetroArch.AppImage -L mednafen_wswan_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "zx8",
+            "command": "../RetroArch.AppImage -L 81_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "atarijaguarcd",
+            "command": "..\\bigpemu\\BigPEmu.exe",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "amiga",
+            "command": "../RetroArch.AppImage -L pue2021_libretro.so",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": false
+        },
+        {
+            "system": "cdimono1",
+            "command": "..\\RetroArch\\retroarch.exe",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": true
+        },
+        {
+            "system": "pinballfx3",
+            "command": "..\\PinballFX3\\PinballFX3.exe",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": null
+        },
+        {
+            "system": "triforce",
+            "command": "../Dolphin.AppImage",
+            "temp_forever_modes": null,
+            "descompresion_por_sistema": null
+        }
+    ],
+    "core_preferences": {},
+    "ftp_credentials": {},
+    "preguntar_conservar": true,
+    "temp_forever_modes_global": {
+        "amazon": "TEMP",
+        "eagames": "TEMP",
+        "epic": "TEMP",
+        "gog": "TEMP",
+        "mugen": "TEMP",
+        "steam": "TEMP",
+        "windows": "TEMP",
+        "FOREVER": "TEMP",
+        "TEMP": "TEMP"
+    }
+}
