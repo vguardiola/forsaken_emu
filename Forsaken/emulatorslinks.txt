@@ -1,7 +1,0 @@
-check 7z
-
-
-wget -q --show-progressbar https://github.com/stenzek/duckstation/releases/download/latest/DuckStation-x64.AppImage -O DuckStation.AppImage
-wget https://buildbot.libretro.com/stable/1.22.2/linux/x86_64/RetroArch_cores.7z -O ./RetroArch_cores.7z
-7z x ./RetroArch_cores.7z
-cp -r ./RetroArch-Linux-x86_64/RetroArch-Linux-x86_64.AppImage.home/.config/retroarch/cores/* ~/.config/retroarch/cores
