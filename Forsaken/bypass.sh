@@ -6,8 +6,8 @@ bypassDir=$3 #/home/victor/ES-DE/Emulators/Forsaken
 gamePath=$1 #/mnt/data1/ES-DE/roms/3do/3D Atlas (Europe).zip
 gameName=$(basename "${gamePath}" | xargs printf '%b\n')
 platformName=$(dirname "${gamePath}" | sed "s|${romsDir}/||g" | awk -F / '{print $1}' )
-downloadTempDir="${romsDir}/TEMP/${platformName}/"
-downloadForeverDir="${romsDir}/FOREVER/${platformName}/"
+downloadTempDir="${romsDir}/_temp/${platformName}/"
+downloadForeverDir="${romsDir}/_forever/${platformName}/"
 
 url=""
 size=0
@@ -15,7 +15,6 @@ size=0
 debug() {
  echo "$1" >> ${logFile}
 }
-
 findGameUrl() {
     data=$(grep "${gameName}" "${bypassDir}/lists/${platformName}.txt");
     url=$(echo ${data} | awk -F'*' '{print $1}' | awk -F'=' '{print $2}');
@@ -36,33 +35,62 @@ existRom() {
 downloadRom() {
     local romFile="${downloadTempDir}${gameName}";
     mkdir -p "${downloadTempDir}";
-    wget --progress=bar:force:noscroll -O "${romFile}" "${url}" 2>&1 | \
-    tr '\r' '\n' | \
-    grep --line-buffered "%" | \
-    sed -u -r 's/.* ([0-9]+)%.* ([0-9.,]+ [KMG]B\/s).*/\1\n# Downloading at \2/' | \
-    zenity --progress --title="Downloading ${gameName}" --auto-close --percentage=0
-    
+    wget -q --show-progress -O "${romFile}" "${url}" 2>&1 | awk '{print $7}' | zenity --progress --title="Downloading ${gameName}" --auto-close --percentage=0
     if [ $? -ne 0 ]; then
         rm -f "${romFile}"
         exit 1
     fi
 }
+readConfigForPlatformacceptZipFiles() {
+    local config_file="${bypassDir}/config_v2.json"
+    if [ -f "$config_file" ]; then
+        echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .acceptZipFiles | if type=="array" then .[0] else . end' "$config_file")"
+    fi
+}
 
+readConfigForPlatformfileExtension() {
+    local config_file="${bypassDir}/config_v2.json"
+    if [ -f "$config_file" ]; then
+        echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .fileExtension | if type=="array" then .[0] else . end' "$config_file")"
+    fi
+}
 
 runEmulator() {
     local rom=$1
     local romPath=$(dirname "${rom}")
-    7z x -bsp1 -y "${rom}" -o"${romPath}" | \
-    tr '\r' '\n' | \
-    sed -u -n 's/.*\ \([0-9]\+\)%.*/\1/p' | \
-    zenity --progress --title="Extracting ${gameName}" --auto-close --no-cancel --percentage=0
-    ${bypassDir}/../RetroArch.AppImage -L puae2021_libretro.so "${rom}"
+    local emu_cmd=$(readConfigForPlatform)
+    local acceptZipFiles=$(readConfigForPlatformacceptZipFiles)
+    #local fileExtension=$(readConfigForPlatformfileExtension)
+    if [ "$acceptZipFiles" = true ]; then
+        7z x -bsp2 -y "${rom}" -o"${romPath}" | \
+        zenity --progress --title="Extracting ${gameName}" --auto-close --no-cancel --percentage=0
+    fi
+    # if fileExtension change rom extenstion, but not ever the current extension is zip
+    #if [ -n "$fileExtension" ]; then
+    #    rom="${rom%.*}.${fileExtension}"
+    #fi
+    
+    if [ -n "$emu_cmd" ]; then
+        local safe_rom=$(printf %q "${rom}")
+        local full_command="${bypassDir}/${emu_cmd} ${safe_rom}"
+        debug "emu_cmd: ${full_command}"
+        eval "${full_command}"
+    else
+        zenity --error --text="No emulator configuration found for platform: ${platformName}"
+    fi
 }
 
 askSaveRom() {
-    zenity --question --title="Save Rom" --text="Do you want to save this rom?"
+    zenity --question --title="Save Rom" --text="Do you want to save this rom?" --ok-label="Save" --cancel-label="Discard" --default-cancel
     if [ $? -eq 0 ]; then
         mv "${downloadTempDir}${gameName}" "${downloadForeverDir}${gameName}"
+    fi
+}
+
+readConfigForPlatform() {
+    local config_file="${bypassDir}/config_v2.json"
+    if [ -f "$config_file" ]; then
+        echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .command | if type=="array" then .[0] else . end' "$config_file")"
     fi
 }
 
