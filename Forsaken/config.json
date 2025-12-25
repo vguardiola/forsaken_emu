@@ -879,16 +879,5 @@
             "acceptZipFiles": true,
             "corePreferences": {}
         }
-    ],
-    "useForeverMode": {
-        "amazon": false,
-        "eagames": false,
-        "epic": false,
-        "gog": false,
-        "mugen": false,
-        "steam": false,
-        "windows": false,
-        "FOREVER": false,
-        "TEMP": false
-    }
+    ]
 }

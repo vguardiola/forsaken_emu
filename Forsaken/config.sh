@@ -2,7 +2,7 @@
 
 TEMP_FILE=$(mktemp)
 CONFIG_REAL_PATH=$(dirname $0)
-CONFIG_FILE="${CONFIG_REAL_PATH}/config_v2.json"
+CONFIG_FILE="${CONFIG_REAL_PATH}/config.json"
 
 # Ensure config exists
 if [ ! -f "$CONFIG_FILE" ]; then
