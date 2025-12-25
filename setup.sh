@@ -56,6 +56,7 @@ downloadEmulators() {
     wgetAndProgressDialog https://github.com/shadps4-emu/shadPS4/releases/download/v.0.13.0/shadps4-linux-sdl-0.13.0.zip ./shadps4.zip
     wgetAndProgressDialog https://github.com/cemu-project/Cemu/releases/download/v2.6/Cemu-2.6-x86_64.AppImage ./cemu.AppImage
     wgetAndProgressDialog https://github.com/pkgforge-dev/Dolphin-emu-AppImage/releases/download/2509%402025-12-15_1765785200/Dolphin_Emulator-2509-anylinux.squashfs-x86_64.AppImage ./dolphin.AppImage
+    wgetAndProgressDialog https://github.com/Portable-Linux-Apps/ruffle-AppImage/releases/download/nightly-2025-12-22%402025-12-22_1766420590/Ruffle-nightly-2025-12-22-x86_64.AppImage ./ruffle.AppImage
     wgetAndProgressDialog https://buildbot.libretro.com/nightly/linux/x86_64/RetroArch.7z ./RetroArch.7z
     wgetAndProgressDialog https://buildbot.libretro.com/stable/1.22.2/linux/x86_64/RetroArch_cores.7z ./RetroArch_cores.7z
     unzip ./shadps4.zip && rm ./shadps4.zip && mv Shadps4*.AppImage ./shadps4.AppImage
