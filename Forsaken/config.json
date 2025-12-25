@@ -275,10 +275,9 @@
         },
         {
             "system": "flash",
-            "command": "..\\ruffle\\ruffle.exe",
+            "command": "../ruffle.AppImage",
             "useForeverMode": false,
             "acceptZipFiles": true,
-            "todo": true,
             "corePreferences": {}
         },
         {
@@ -315,7 +314,7 @@
             "system": "gamecube",
             "command": [
                 "../retroarch.AppImage -f -L ~/.config/retroarch/cores/dolphin_libretro.so",
-                "../Dolphin.AppImage -e"
+                "../dolphin.AppImage -e"
             ],
             "useForeverMode": false,
             "acceptZipFiles": true,
@@ -353,7 +352,7 @@
             "system": "gc",
             "command": [
                 "../retroarch.AppImage -f -L ~/.config/retroarch/cores/dolphin_libretro.so",
-                "../Dolphin.AppImage -e"
+                "../dolphin.AppImage -e"
             ],
             "temp_forever_modes": null,
             "acceptZipFiles": true,
@@ -525,7 +524,7 @@
         },
         {
             "system": "ngage",
-            "command": "../EKA2L1.AppImage",
+            "command": "../eka2l1.AppImage",
             "useForeverMode": false,
             "acceptZipFiles": true,
             "corePreferences": {}
@@ -553,7 +552,7 @@
         },
         {
             "system": "openbor",
-            "command": "../OpenBOR.AppImage",
+            "command": "../openbor.AppImage",
             "useForeverMode": false,
             "acceptZipFiles": true,
             "corePreferences": {}
@@ -876,13 +875,6 @@
         {
             "system": "zxspectrum",
             "command": "../retroarch.AppImage -f -L ~/.config/retroarch/cores/fuse_libretro.so",
-            "useForeverMode": false,
-            "acceptZipFiles": true,
-            "corePreferences": {}
-        },
-        {
-            "system": "forsaken",
-            "command": "bash",
             "useForeverMode": false,
             "acceptZipFiles": true,
             "corePreferences": {}
