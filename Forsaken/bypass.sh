@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 
 logFile="${3}/bypasss.log"
-romsDir=$2 #/mnt/data1/ES-DE/roms
-bypassDir=$3 #/home/victor/ES-DE/Emulators/Forsaken
-gamePath=$1 #/mnt/data1/ES-DE/roms/3do/3D Atlas (Europe).zip
+gamePath=$1 #"~/ES-DE/roms/3do/3D Atlas (Europe).zip"
+romsDir=$2 #"~/ES-DE/roms"
+bypassDir=$3 #"~/ES-DE/Emulators/Forsaken"
 gameName=$(basename "${gamePath}" | xargs printf '%b\n')
 platformName=$(dirname "${gamePath}" | sed "s|${romsDir}/||g" | awk -F / '{print $1}' )
 downloadTempDir="${romsDir}/_temp/${platformName}/"
@@ -15,6 +15,7 @@ size=0
 debug() {
  echo "$1" >> ${logFile}
 }
+
 findGameUrl() {
     data=$(grep "${gameName}" "${bypassDir}/lists/${platformName}.txt");
     url=$(echo ${data} | awk -F'*' '{print $1}' | awk -F'=' '{print $2}');
@@ -41,7 +42,8 @@ downloadRom() {
         exit 1
     fi
 }
-readConfigForPlatformacceptZipFiles() {
+
+readConfigForPlatformAcceptZipFiles() {
     local config_file="${bypassDir}/config_v2.json"
     if [ -f "$config_file" ]; then
         echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .acceptZipFiles | if type=="array" then .[0] else . end' "$config_file")"
@@ -58,8 +60,8 @@ readConfigForPlatformfileExtension() {
 runEmulator() {
     local rom=$1
     local romPath=$(dirname "${rom}")
-    local emu_cmd=$(readConfigForPlatform)
-    local acceptZipFiles=$(readConfigForPlatformacceptZipFiles)
+    local emu_cmd=$(readConfigForPlatformCommand)
+    local acceptZipFiles=$(readConfigForPlatformAcceptZipFiles)
     #local fileExtension=$(readConfigForPlatformfileExtension)
     if [ "$acceptZipFiles" = true ]; then
         7z x -bsp2 -y "${rom}" -o"${romPath}" | \
@@ -87,7 +89,7 @@ askSaveRom() {
     fi
 }
 
-readConfigForPlatform() {
+readConfigForPlatformCommand() {
     local config_file="${bypassDir}/config_v2.json"
     if [ -f "$config_file" ]; then
         echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .command | if type=="array" then .[0] else . end' "$config_file")"

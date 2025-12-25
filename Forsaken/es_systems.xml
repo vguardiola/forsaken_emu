@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<!-- This is the ES-DE Frontend game systems configuration file for Windows -->
 <systemList>
     <system>
         <name>3do</name>
@@ -43,7 +42,6 @@
         <path>%ROMPATH%\ags</path>
         <extension>.bat .BAT .lnk .LNK .torrent</extension>
         <command label="forsaken">~/ES-DE/Emulators/Forsaken/bypass.sh "%ROM%" "%ROMPATH%" "%EMUDIR%"</command>
-        <command label="Shortcut or script">%HIDEWINDOW% %ESCAPESPECIALS% %EMULATOR_OS-SHELL% /C %ROM%</command>
         <platform>pcwindows</platform>
         <theme>ags</theme>
     </system>
@@ -764,7 +762,7 @@
         <path>%ROMPATH%\lutris</path>
         <extension>.7z .7Z .zip .ZIP .torrent</extension>
         <command label="forsaken">~/ES-DE/Emulators/Forsaken/bypass.sh "%ROM%" "%ROMPATH%" "%EMUDIR%"</command>
-        <command>PLACEHOLDER %ROM%</command>
+        <command label="lutris">PLACEHOLDER %ROM%</command>
         <platform>pc</platform>
         <theme>lutris</theme>
     </system>
@@ -872,7 +870,7 @@
         <fullname>Multi Emulator Super System</fullname>
         <path>%ROMPATH%\mess</path>
         <extension>.chd .CHD .7z .7Z .zip .ZIP .torrent</extension>
-        <command label="Arley4dBypass">python "%EMULATOR_ARLEY4D%\Arley4d Bypass PC\Arley4dBypassPC.py" %ROM%</command>
+        <command label="forsaken">~/ES-DE/Emulators/Forsaken/bypass.sh "%ROM%" "%ROMPATH%" "%EMUDIR%"</command>
         <platform>mess</platform>
         <theme>mess</theme>
     </system>
@@ -1271,15 +1269,6 @@
         <extension>.torrent .pdf</extension>        
         <platform>revistas</platform>
         <theme>revistas</theme>
-    </system>
-    <system>
-        <name>ChangeRoms</name>
-        <fullname>Cambiar Roms Arley4d/Transcan</fullname>
-        <command label="forsaken">"./Emulators/ChangeRoms/ChangeRoms.exe" %ROM%</command>
-        <path>%ROMPATH%/../Emulators/ChangeRoms</path>
-        <extension>.exe</extension>        
-        <platform>ChangeRoms</platform>
-        <theme>ChangeRoms</theme>
     </system>
     <system>
         <name>psvita</name>
@@ -1860,5 +1849,14 @@
         <command label="forsaken">~/ES-DE/Emulators/Forsaken/bypass.sh "%ROM%" "%ROMPATH%" "%EMUDIR%"</command>
         <platform>zxspectrum</platform>
         <theme>zxspectrum</theme>
+    </system>
+    <system>
+        <name>Forsaken</name>
+        <fullname>Forsaken config</fullname>
+        <command label="forsaken">bash "%ROM%"</command>
+        <path>~/ES-DE/Emulators/Forsaken/</path>
+        <extension>.sh</extension>        
+        <platform>Forsaken</platform>
+        <theme>Forsaken</theme>
     </system>
 </systemList>

@@ -22,7 +22,8 @@
             "command": "../RetroArch.AppImage -f -L ~/.config/retroarch/cores/puae2021_libretro.so",
             "temp_forever_modes": null,
             "acceptZipFiles": true,
-            "corePreferences": {}
+            "corePreferences": {},
+            "useForeverMode": false
         },
         {
             "system": "amiga1200",
@@ -36,7 +37,8 @@
             "command": "../RetroArch.AppImage -f -L ~/.config/retroarch/cores/puae2021_libretro.so",
             "useForeverMode": false,
             "acceptZipFiles": true,
-            "corePreferences": {}
+            "corePreferences": {},
+            "todo": false
         },
         {
             "system": "amigacd32",
@@ -579,7 +581,7 @@
         },
         {
             "system": "peliculas",
-            "command": "../VLC.AppImage",
+            "command": "../vlc.AppImage",
             "useForeverMode": false,
             "acceptZipFiles": true,
             "corePreferences": {}
@@ -618,10 +620,9 @@
         },
         {
             "system": "ps4",
-            "command": "..\\shadps4\\shadPS4.exe",
+            "command": "../shadps4.AppImage",
             "useForeverMode": false,
             "acceptZipFiles": true,
-            "todo": true,
             "corePreferences": {}
         },
         {
@@ -633,10 +634,9 @@
         },
         {
             "system": "psvita",
-            "command": "..\\vita3k\\Vita3K.exe",
+            "command": "../vita3k.AppImage",
             "useForeverMode": false,
             "acceptZipFiles": true,
-            "todo": true,
             "corePreferences": {}
         },
         {
@@ -648,9 +648,9 @@
         },
         {
             "system": "revistas",
-            "command": "../mupdf.AppImage",
+            "command": "../pdf.AppImage",
             "useForeverMode": false,
-            "acceptZipFiles": true,
+            "acceptZipFiles": false,
             "corePreferences": {}
         },
         {
@@ -874,13 +874,6 @@
             "corePreferences": {}
         },
         {
-            "system": "zx8",
-            "command": "../RetroArch.AppImage -f -L ~/.config/retroarch/cores/81_libretro.so",
-            "temp_forever_modes": null,
-            "acceptZipFiles": true,
-            "corePreferences": {}
-        },
-        {
             "system": "zx81",
             "command": "../RetroArch.AppImage -f -L ~/.config/retroarch/cores/81_libretro.so",
             "useForeverMode": false,
@@ -890,6 +883,13 @@
         {
             "system": "zxspectrum",
             "command": "../RetroArch.AppImage -f -L ~/.config/retroarch/cores/fuse_libretro.so",
+            "useForeverMode": false,
+            "acceptZipFiles": true,
+            "corePreferences": {}
+        },
+        {
+            "system": "forsaken",
+            "command": "bash",
             "useForeverMode": false,
             "acceptZipFiles": true,
             "corePreferences": {}
