@@ -8,7 +8,7 @@ gameName=$(basename "${gamePath}" | xargs printf '%b\n')
 platformName=$(dirname "${gamePath}" | sed "s|${romsDir}/||g" | awk -F / '{print $1}' )
 downloadTempDir="${romsDir}/_temp/${platformName}/"
 downloadForeverDir="${romsDir}/_forever/${platformName}/"
-
+configFile="${bypassDir}/config.json"
 url=""
 size=0
 
@@ -44,16 +44,14 @@ downloadRom() {
 }
 
 readConfigForPlatformAcceptZipFiles() {
-    local config_file="${bypassDir}/config_v2.json"
-    if [ -f "$config_file" ]; then
-        echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .acceptZipFiles | if type=="array" then .[0] else . end' "$config_file")"
+    if [ -f "$configFile" ]; then
+        echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .acceptZipFiles | if type=="array" then .[0] else . end' "$configFile")"
     fi
 }
 
 readConfigForPlatformfileExtension() {
-    local config_file="${bypassDir}/config_v2.json"
-    if [ -f "$config_file" ]; then
-        echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .fileExtension | if type=="array" then .[0] else . end' "$config_file")"
+    if [ -f "$configFile" ]; then
+        echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .fileExtension | if type=="array" then .[0] else . end' "$configFile")"
     fi
 }
 
@@ -62,15 +60,10 @@ runEmulator() {
     local romPath=$(dirname "${rom}")
     local emu_cmd=$(readConfigForPlatformCommand)
     local acceptZipFiles=$(readConfigForPlatformAcceptZipFiles)
-    #local fileExtension=$(readConfigForPlatformfileExtension)
     if [ "$acceptZipFiles" = true ]; then
         7z x -bsp2 -y "${rom}" -o"${romPath}" | \
         zenity --progress --title="Extracting ${gameName}" --auto-close --no-cancel --percentage=0
     fi
-    # if fileExtension change rom extenstion, but not ever the current extension is zip
-    #if [ -n "$fileExtension" ]; then
-    #    rom="${rom%.*}.${fileExtension}"
-    #fi
     
     if [ -n "$emu_cmd" ]; then
         local safe_rom=$(printf %q "${rom}")
@@ -90,9 +83,8 @@ askSaveRom() {
 }
 
 readConfigForPlatformCommand() {
-    local config_file="${bypassDir}/config_v2.json"
-    if [ -f "$config_file" ]; then
-        echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .command | if type=="array" then .[0] else . end' "$config_file")"
+    if [ -f "$configFile" ]; then
+        echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .command | if type=="array" then .[0] else . end' "$configFile")"
     fi
 }
 
