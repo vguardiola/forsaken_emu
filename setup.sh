@@ -12,6 +12,7 @@ downloadList() {
 generateFakeRoms() {
     local count=0
     local total=$(ls ./lists/*.txt | wc -l)
+    local excludePlatforms=("peliculas" "pinballfx3" "fpinball")
     cd lists
     for fileName in ./*.txt; do
         platformName=$(echo "${fileName%.txt}")

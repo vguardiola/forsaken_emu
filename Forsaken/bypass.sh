@@ -58,18 +58,31 @@ readConfigForPlatformfileExtension() {
 runEmulator() {
     local rom=$1
     local romPath=$(dirname "${rom}")
-    local emu_cmd=$(readConfigForPlatformCommand)
+    local romName=$(basename "${rom}")
+
+    local emuCmd=$(readConfigForPlatformCommand)
+    local fullCommand="${bypassDir}/${emuCmd}"
+
     local acceptZipFiles=$(readConfigForPlatformAcceptZipFiles)
-    if [ "$acceptZipFiles" = true ]; then
+    if [ "$acceptZipFiles" = false ]; then
         7z x -bsp2 -y "${rom}" -o"${romPath}" | \
         zenity --progress --title="Extracting ${gameName}" --auto-close --no-cancel --percentage=0
     fi
-    
-    if [ -n "$emu_cmd" ]; then
-        local safe_rom=$(printf %q "${rom}")
-        local full_command="${bypassDir}/${emu_cmd} ${safe_rom}"
-        debug "emu_cmd: ${full_command}"
-        eval "${full_command}"
+
+    case "$platformName" in
+        pinballfx3) #don't work at this moment
+            rom=$(echo "-table_${romName%.*}" | tr " " "_")
+            full_command="${emuCmd}"
+        ;;
+        *)
+        ;;
+    esac
+
+    if [ -n "$emuCmd" ]; then
+        local safeRom=$(printf %q "${rom}")
+
+        debug "emu_cmd: ${fullCommand} ${safeRom}"
+        eval "${fullCommand} ${safeRom}"
     else
         zenity --error --text="No emulator configuration found for platform: ${platformName}"
     fi
@@ -78,6 +91,7 @@ runEmulator() {
 askSaveRom() {
     zenity --question --title="Save Rom" --text="Do you want to save this rom?" --ok-label="Save" --cancel-label="Discard" --default-cancel
     if [ $? -eq 0 ]; then
+        mkdir -p "${downloadForeverDir}"
         mv "${downloadTempDir}${gameName}" "${downloadForeverDir}${gameName}"
     fi
 }
