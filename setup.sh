@@ -116,8 +116,8 @@ startDialog() {
         --extra-button="Generate Fake Roms" --extra-button="Download Emulators" )
     case $choice in
         "Generate Fake Roms")
-            downloadList
-            generateFakeRoms
+            downloadList  | zenity --progress --title="Downloading roms list" --auto-close --percentage=0 --no-cancel --width=640 --height=480
+            generateFakeRoms | zenity --progress --title="Generatin Fake Roms" --auto-close --percentage=0 --no-cancel --width=640 --height=480
             startDialog
             ;;
         "Download Emulators")
