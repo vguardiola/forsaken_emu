@@ -129,7 +129,7 @@ startDialog() {
     esac
 }
 
-cd ./Forsaken
+cd ./Forsaken || exit
 checkSystemApps
 mkdir -p ./roms/_temp
 mkdir -p ./roms/_forever
