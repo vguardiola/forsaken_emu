@@ -12,15 +12,16 @@ downloadList() {
 generateFakeRoms() {
     local count=0
     local total=$(ls ./lists/*.txt | wc -l)
-    for fileName in ./lists/*.txt; do
+    cd lists
+    for fileName in ./*.txt; do
         platformName=$(echo "${fileName%.txt}")
         subfolder=""
         if [[ "$platformName" == *" "* ]]; then
             subfolder=$(echo "${platformName#* *}" | tr -d '()[]')
             platformName=$(echo "$platformName" | awk -F ' ' '{print $1}')
-            path="./roms/${platformName}/${subfolder}"  
+            path="../roms/${platformName}/${subfolder}"
         else
-            path="./roms/${platformName}"
+            path="../roms/${platformName}"
         fi
         mkdir -p "${path}"
         echo "# ${platformName}/${subfolder}"
@@ -53,7 +54,7 @@ downloadEmulators() {
     wgetAndProgressDialog https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-5.1.3.10/qBittorrent-Enhanced-Edition-x86_64.AppImage ../qbittorrent.AppImage
     wgetAndProgressDialog https://github.com/koreader/koreader/releases/download/v2025.10/koreader-appimage-x86_64-v2025.10.AppImage ../pdf.AppImage
     wgetAndProgressDialog https://github.com/Vita3K/Vita3K/releases/download/continuous/Vita3K-x86_64.AppImage ../vita3k.AppImage
-    wgetAndProgressDialog https://github.com/shadps4-emu/shadPS4/releases/download/v.0.13.0/shadps4-linux-sdl-0.13.0.zip ./shadps4.zip
+    wgetAndProgressDialog https://github.com/shadps4-emu/shadPS4/releases/download/v.0.13.0/shadps4-linux-sdl-0.13.0.zip ../shadps4.zip
     wgetAndProgressDialog https://github.com/cemu-project/Cemu/releases/download/v2.6/Cemu-2.6-x86_64.AppImage ../cemu.AppImage
     wgetAndProgressDialog https://github.com/pkgforge-dev/Dolphin-emu-AppImage/releases/download/2509%402025-12-15_1765785200/Dolphin_Emulator-2509-anylinux.squashfs-x86_64.AppImage ../dolphin.AppImage
     wgetAndProgressDialog https://github.com/Portable-Linux-Apps/ruffle-AppImage/releases/download/nightly-2025-12-22%402025-12-22_1766420590/Ruffle-nightly-2025-12-22-x86_64.AppImage ../ruffle.AppImage
@@ -91,7 +92,7 @@ installCommandPerDistribution() {
 }
 
 checkSystemApps() {
-    local neededApps=("7z" "wget" "git" "retroarch" "zenity" "jq")
+    local neededApps=("7z" "wget" "git" "unrar" "zenity" "jq")
     local neededAppsNotFound=()
     for app in "${neededApps[@]}"; do
         if ! command -v "$app" &> /dev/null; then
@@ -114,7 +115,7 @@ startDialog() {
         --extra-button="Generate Fake Roms" --extra-button="Download Emulators" )
     case $choice in
         "Generate Fake Roms")
-            echodownloadList
+            downloadList
             generateFakeRoms
             startDialog
             ;;
