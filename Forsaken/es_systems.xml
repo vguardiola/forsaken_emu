@@ -1855,7 +1855,7 @@
         <command label="forsaken">bash "%ROM%"</command>
         <path>~/ES-DE/emulators/Forsaken/</path>
         <extension>.sh</extension>        
-        <platform>Forsaken</platform>
-        <theme>Forsaken</theme>
+        <platform>forsaken</platform>
+        <theme>forsaken</theme>
     </system>
 </systemList>
