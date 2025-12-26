@@ -135,6 +135,6 @@ mkdir -p ./roms/_temp
 mkdir -p ./roms/_forever
 mkdir -p ~/.config/retroarch/
 cp ./es_systems.xml ~/ES-DE/custom_systems/es_systems.xml
-sed -i 's|ROMDirectory=""|ROMDirectory="~/ES-DE/Emulators/Forsaken/roms"|' ~/ES-DE/settings/es_settings.xml
+sed -i 's|<string name="ROMDirectory" value=""|<string name="ROMDirectory" value="~/ES-DE/Emulators/Forsaken/roms"|' ~/ES-DE/settings/es_settings.xml
 startDialog
 cd ..
