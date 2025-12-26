@@ -28,9 +28,10 @@
 
 ## 🛠️ Setup
 
-1.  Clone this repository or download the script.
-2.  Make sure you have basic dependencies installed (the script will check for `7z`, `wget`, `git`, `retroarch`, `zenity`, `jq`).
-3.  Run the setup script:
+1.  Create a "emulators" folder inside ~/ES-DE/ folder
+2.  Clone this repository or download the script and copy the content inside emulators folder.
+3.  Make sure you have basic dependencies installed (the script will check for `7z`, `wget`, `git`, `unzip`, `unrar`, `zenity`, `jq`).
+4.  Run the setup script:
     ```bash
     ./setup.sh
     ```
@@ -41,7 +42,7 @@
 *   `setup.sh`: The main installer script.
 *   `Forsaken/bypass.sh`: The launcher wrapper that handles ROM logic.
 *   `Forsaken/config.sh`: The emulators config app.
-*   `Forsaken/config_v2.json`: Configuration file defining emulator commands and system settings.
+*   `Forsaken/config.json`: Configuration file defining emulator commands and system settings.
 *   `lists/`: Directory containing game databases for the "Fake ROM" generator.
 
 ## 🎮 Supported Systems
@@ -58,7 +59,7 @@ Support includes but is not limited to:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-##  Thanks
+## 🙏🏻 Thanks
 
 *   [Arley4d](https://github.com/Arley4d) for the roms list and the inspiration for this project.
 
