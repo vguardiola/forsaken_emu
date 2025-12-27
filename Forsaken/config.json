@@ -317,7 +317,7 @@
                 "../dolphin.AppImage -e"
             ],
             "useForeverMode": false,
-            "acceptZipFiles": true,
+            "acceptZipFiles": false,
             "corePreferences": {}
         },
         {
@@ -355,7 +355,7 @@
                 "../dolphin.AppImage -e"
             ],
             "temp_forever_modes": null,
-            "acceptZipFiles": true,
+            "acceptZipFiles": false,
             "corePreferences": {}
         },
         {
@@ -594,7 +594,7 @@
         },
         {
             "system": "pinballfx3",
-            "command": "..\\PinballFX3\\PinballFX3.exe",
+            "command": "steam -applaunch 442120 -offline -class",
             "temp_forever_modes": null,
             "acceptZipFiles": null,
             "todo": true,
@@ -711,8 +711,8 @@
         {
             "system": "switch",
             "command": [
-                "../citron.AppImage",
-                "../ryujinx.AppImage"
+                "../ryujinx.AppImage",
+                "../citron.AppImage"
             ],
             "useForeverMode": false,
             "acceptZipFiles": true,
@@ -728,9 +728,12 @@
         },
         {
             "system": "triforce",
-            "command": "../dolphin.AppImage",
-            "temp_forever_modes": null,
-            "acceptZipFiles": null,
+            "command": [
+                "../retroarch.AppImage -f -L ~/.config/retroarch/cores/dolphin_libretro.so",
+                "../dolphin.AppImage -e"
+            ],
+            "useForeverMode": false,
+            "acceptZipFiles": false,
             "corePreferences": {}
         },
         {
@@ -782,7 +785,7 @@
                 "../dolphin.AppImage -e"
             ],
             "useForeverMode": false,
-            "acceptZipFiles": true,
+            "acceptZipFiles": false,
             "corePreferences": {}
         },
         {
@@ -799,7 +802,7 @@
                 "../dolphin.AppImage -e"
             ],
             "useForeverMode": false,
-            "acceptZipFiles": true,
+            "acceptZipFiles": false,
             "corePreferences": {}
         },
         {

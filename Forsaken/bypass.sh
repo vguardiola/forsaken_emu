@@ -11,24 +11,30 @@ downloadForeverDir="${romsDir}/_forever/${platformName}/"
 configFile="${bypassDir}/config.json"
 url=""
 size=0
+zipExtensions=("7z" "zip")
+rarExtensions=("rar")
 
 debug() {
  echo "$1" >> ${logFile}
 }
 
 findGameUrl() {
-    data=$(grep "${gameName}" "${bypassDir}/lists/${platformName}.txt");
+    data=$(cd "${bypassDir}/lists/" && grep -F "${gameName}" ${platformName}*.txt);
     url=$(echo ${data} | awk -F'*' '{print $1}' | awk -F'=' '{print $2}');
     url=${url% }
-    size=$(echo ${data} | awk -F'*' '{print $2}' | awk -F'=' '{print $2}' | awk '{print $1}');
+    size=$(echo ${data} | awk -F'*' '{print $2}' | awk -F'=' '{print $2}');
+    if [ ! -n "$url" ]; then
+        zenity --error --text="Rom not found on list, it's a progeamer problem"
+        exit 1
+    fi
 }
 
 existRom() {
     if [ -f "${downloadForeverDir}${gameName}" ]; then
-    return 1;
+        return 1;
     fi
     if [ -f "${downloadTempDir}${gameName}" ]; then
-    return 2;
+        return 2;
     fi
     return 0;
 }
@@ -36,7 +42,12 @@ existRom() {
 downloadRom() {
     local romFile="${downloadTempDir}${gameName}";
     mkdir -p "${downloadTempDir}";
-    wget -q --show-progress -O "${romFile}" "${url}" 2>&1 | awk '{print $7}' | zenity --progress --title="Downloading ${gameName}" --auto-close --percentage=0
+    if [[ $url == *"www.mediafire.com"* ]]; then
+        mediafire-dl -o "${romFile}" "${url}" | zenity --progress --title="Downloading ${gameName}" --auto-close --percentage=0
+    else
+        wget -q --show-progress -O "${romFile}" "${url}" 2>&1 | awk '{print $7}' | zenity --progress --title="Downloading ${gameName}" --auto-close --percentage=0
+    fi
+
     if [ $? -ne 0 ]; then
         rm -f "${romFile}"
         exit 1
@@ -59,20 +70,29 @@ runEmulator() {
     local rom=$1
     local romPath=$(dirname "${rom}")
     local romName=$(basename "${rom}")
+    local romExtension=${rom##*.}
 
     local emuCmd=$(readConfigForPlatformCommand)
     local fullCommand="${bypassDir}/${emuCmd}"
 
     local acceptZipFiles=$(readConfigForPlatformAcceptZipFiles)
     if [ "$acceptZipFiles" = false ]; then
-        7z x -bsp2 -y "${rom}" -o"${romPath}" | \
-        zenity --progress --title="Extracting ${gameName}" --auto-close --no-cancel --percentage=0
+        if [ "$romExtension" = "zip" ] || [ "$romExtension" = "7z" ]; then
+            7z x -bsp2 -y "${rom}" -o"${romPath}" | \
+            zenity --progress --title="Extracting ${gameName}" --auto-close --no-cancel --percentage=0
+            rom=$(7z l -ba "${rom}" | grep -vF 'D....' | grep -oP '(?<=^.{53}).*')
+            rom="${romPath}/${rom}"
+        fi
+        if [ "$romExtension" = "rar" ]; then
+            zenity --info --text="Rar decompresion is underdevlopemnt"
+            exit 1
+        fi
     fi
 
     case "$platformName" in
-        pinballfx3) #don't work at this moment
+        pinballfx3)
             rom=$(echo "-table_${romName%.*}" | tr " " "_")
-            full_command="${emuCmd}"
+            fullCommand="${emuCmd}"
         ;;
         *)
         ;;
@@ -81,7 +101,7 @@ runEmulator() {
     if [ -n "$emuCmd" ]; then
         local safeRom=$(printf %q "${rom}")
 
-        debug "emu_cmd: ${fullCommand} ${safeRom}"
+        debug "emuCmd: ${fullCommand} ${safeRom}"
         eval "${fullCommand} ${safeRom}"
     else
         zenity --error --text="No emulator configuration found for platform: ${platformName}"
@@ -102,6 +122,10 @@ readConfigForPlatformCommand() {
     fi
 }
 
+cleanTempDir() {
+    rm -rf "${downloadTempDir}/*"
+}
+
 existRom
 exist=$?
 case $exist in
@@ -114,6 +138,7 @@ case $exist in
         ;;
     *)
         findGameUrl
+        cleanTempDir
         downloadRom
         runEmulator "${downloadTempDir}${gameName}"
         askSaveRom
