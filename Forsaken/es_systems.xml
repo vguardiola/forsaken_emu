@@ -1609,7 +1609,6 @@
         <path>%ROMPATH%\type-x</path>
         <extension>.bat .BAT .lnk .LNK .torrent</extension>
         <command label="forsaken">~/ES-DE/emulators/Forsaken/bypass.sh "%ROM%" "%ROMPATH%" "%EMUDIR%"</command>
-        <command label="Shortcut or script">%HIDEWINDOW% %ESCAPESPECIALS% %EMULATOR_OS-SHELL% /C %ROM%</command>
         <platform>arcade</platform>
         <theme>type-x</theme>
     </system>
@@ -1619,7 +1618,6 @@
         <path>%ROMPATH%\uzebox</path>
         <extension>.uze .UZE .7z .7Z .zip .ZIP .torrent</extension>
         <command label="forsaken">~/ES-DE/emulators/Forsaken/bypass.sh "%ROM%" "%ROMPATH%" "%EMUDIR%"</command>
-        <command label="Uzem">%EMULATOR_RETROARCH% -L %CORE_RETROARCH%\uzem_libretro.dll %ROM%</command>
         <platform>uzebox</platform>
         <theme>uzebox</theme>
     </system>

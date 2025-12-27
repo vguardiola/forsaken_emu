@@ -3,6 +3,7 @@
 logFile="${3}/bypasss.log"
 gamePath=$1 #"~/ES-DE/roms/3do/3D Atlas (Europe).zip"
 romsDir=$2 #"~/ES-DE/roms"
+listDir="${romsDir}/../lists"
 bypassDir=$3 #"~/ES-DE/Emulators/Forsaken"
 gameName=$(basename "${gamePath}" | xargs printf '%b\n')
 platformName=$(dirname "${gamePath}" | sed "s|${romsDir}/||g" | awk -F / '{print $1}' )
@@ -19,7 +20,7 @@ debug() {
 }
 
 findGameUrl() {
-    data=$(cd "${bypassDir}/lists/" && grep -F "${gameName}" ${platformName}*.txt);
+    data=$(cd "${listDir}/" && grep -F "${gameName}" ${platformName}*.txt);
     url=$(echo ${data} | awk -F'*' '{print $1}' | awk -F'=' '{print $2}');
     url=${url% }
     size=$(echo ${data} | awk -F'*' '{print $2}' | awk -F'=' '{print $2}');

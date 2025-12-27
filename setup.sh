@@ -37,10 +37,10 @@ wgetAndProgressDialog() {
 downloadEmulators() {
     wgetAndProgressDialog https://github.com/stenzek/duckstation/releases/download/latest/DuckStation-x64.AppImage ./duckstation.AppImage
     wgetAndProgressDialog https://github.com/EKA2L1/EKA2L1/releases/download/continous/EKA2L1-Linux-x86_64.AppImage ./eka2l1.AppImage
-    wgetAndProgressDialog https://ocs-dl.fra1.cdn.digitaloceanspaces.com/data/files/1524979887/VLC_media_player-3.0.11.1-x86_64.AppImage ./vlc.AppImage 
-    wgetAndProgressDialog https://github.com/DCurrent/openbor/releases/download/v7533/OpenBOR-Linux-x86-v4.0.Build.7533.AppImage ./openbor.AppImage  
-    wgetAndProgressDialog https://github.com/PCSX2/pcsx2/releases/download/v2.4.0/pcsx2-v2.4.0-linux-appimage-x64-Qt.AppImage ./pcsx2.AppImage  
-    wgetAndProgressDialog https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-f81a5a5cb1cd30678061bff31b2156090abe2a57/rpcs3-v0.0.38-18544-f81a5a5c_linux64.AppImage ./rpcs3.AppImage 
+    wgetAndProgressDialog https://ocs-dl.fra1.cdn.digitaloceanspaces.com/data/files/1524979887/VLC_media_player-3.0.11.1-x86_64.AppImage ./vlc.AppImage
+    wgetAndProgressDialog https://github.com/DCurrent/openbor/releases/download/v7533/OpenBOR-Linux-x86-v4.0.Build.7533.AppImage ./openbor.AppImage
+    wgetAndProgressDialog https://github.com/PCSX2/pcsx2/releases/download/v2.4.0/pcsx2-v2.4.0-linux-appimage-x64-Qt.AppImage ./pcsx2.AppImage
+    wgetAndProgressDialog https://github.com/RPCS3/rpcs3-binaries-linux/releases/download/build-f81a5a5cb1cd30678061bff31b2156090abe2a57/rpcs3-v0.0.38-18544-f81a5a5c_linux64.AppImage ./rpcs3.AppImage
     wgetAndProgressDialog https://git.ryujinx.app/api/v4/projects/1/packages/generic/Ryubing/1.3.3/ryujinx-1.3.3-x64.AppImage ./ryujinx.AppImage
     wgetAndProgressDialog https://github.com/pkgforge-dev/xenia-canary-AppImage/releases/download/4cbcae5%402025-12-15_1765783676/Xenia_Canary-4cbcae5-anylinux-x86_64.AppImage ./xenia.AppImage
     wgetAndProgressDialog https://github.com/xemu-project/xemu/releases/download/v0.8.121/xemu-v0.8.121-x86_64.AppImage ./xemu.AppImage
