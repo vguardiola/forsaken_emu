@@ -11,7 +11,6 @@
     *   **PCSX2** (PS2)
     *   **RPCS3** (PS3)
     *   **Xenia** (Xbox 360)
-    *   **Ryujinx** & **Yuzu** forks (Switch)
     *   **RetroArch** (with a full suite of cores)
     *   And many more (Vita3K, Lime3DS, etc.)!
 
@@ -48,7 +47,7 @@
 ## 🎮 Supported Systems
 
 Support includes but is not limited to:
-*   Nintendo (NES, SNES, N64, GC, Wii, WiiU, Switch, GB/GBC/GBA, DS, 3DS)
+*   Nintendo (NES, SNES, N64, GC, Wii, WiiU, GB/GBC/GBA, DS, 3DS)
 *   Sony (PS1, PS2, PS3, PSP, PS Vita)
 *   Sega (Master System, Genesis, Saturn, Dreamcast)
 *   Microsoft (Xbox, Xbox 360)

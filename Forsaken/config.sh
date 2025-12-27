@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 TEMP_FILE=$(mktemp)
 CONFIG_REAL_PATH=$(dirname $0)

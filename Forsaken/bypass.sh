@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 logFile="${3}/bypasss.log"
 gamePath=$1 #"~/ES-DE/roms/3do/3D Atlas (Europe).zip"
@@ -12,8 +12,6 @@ downloadForeverDir="${romsDir}/_forever/${platformName}/"
 configFile="${bypassDir}/config.json"
 url=""
 size=0
-zipExtensions=("7z" "zip")
-rarExtensions=("rar")
 
 debug() {
  echo "$1" >> ${logFile}

@@ -1,4 +1,5 @@
 Forsaken/bypasss.log
-Forsaken/lists
-Forsaken/roms
+lists/
+lists/*.txt
+roms/
 *.AppImage

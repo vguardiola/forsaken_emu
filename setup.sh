@@ -1,13 +1,10 @@
 #!/bin/bash
 
 downloadList() {
-    if [ ! -d "./lists" ]; then
-        git clone https://github.com/vguardiola/romlists.git ./lists
-    fi
-    cd ./lists
-    git pull
+    rm -rf ./lists
+    wgetAndProgressDialog https://github.com/vguardiola/romlists/archive/refs/heads/main.zip ./lists.zip
+    7z x -bsp2 -y -o./ ./lists.zip && rm ./lists.zip && mv ./romlists-main ./lists
 }
-
 
 generateFakeRoms() {
     local count=0
@@ -56,7 +53,7 @@ downloadEmulators() {
     wgetAndProgressDialog https://gitlab.com/es-de/emulationstation-de/-/package_files/246875981/download ./es-de.AppImage
     wgetAndProgressDialog https://git.citron-emu.org/Citron/Emulator/releases/download/0.11.0/Citron_stable_0.11.0_linux.AppImage ./citron.AppImage
 
-    unzip ./shadps4.zip && rm ./shadps4.zip && mv Shadps4*.AppImage ./shadps4.AppImage
+    7z x ./shadps4.zip -o./ && rm ./shadps4.zip && mv Shadps4*.AppImage ./shadps4.AppImage
     7z x ./RetroArch.7z -o./ && rm ./RetroArch.7z
     7z x ./RetroArch_cores.7z -o./ && rm ./RetroArch_cores.7z
     cp -r ./RetroArch-Linux-x86_64/RetroArch-Linux-x86_64.AppImage.home/.config/retroarch/* ~/.config/retroarch/
@@ -87,8 +84,8 @@ installCommandPerDistribution() {
 }
 
 checkSystemApps() {
-#pip3 install git+https://github.com/Juvenal-Yescas/mediafire-dl
-    local neededApps=("7z" "wget" "git" "unrar" "zenity" "jq" "unzip" "mediafire-dl")
+    #pipx install git+https://github.com/Juvenal-Yescas/mediafire-dl
+    local neededApps=("7z" "wget" "unrar" "zenity" "jq" "mediafire-dl")
     local neededAppsNotFound=()
     for app in "${neededApps[@]}"; do
         if ! command -v "$app" &> /dev/null; then
@@ -109,7 +106,7 @@ startDialog() {
     choice=$(zenity --info --text="Welcome to Forsaken Emulator Setup" \
         --icon="./Forsaken/icon.png" --width=640 --height=480 \
         --extra-button="Generate Roms" \
-        --extra-button="Download Emulators"
+        --extra-button="Download Emulators" 2>/dev/null
         )
     case $choice in
         "Generate Roms")
