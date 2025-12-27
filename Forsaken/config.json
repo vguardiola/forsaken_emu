@@ -22,8 +22,7 @@
             "command": "../retroarch.AppImage -f -L ~/.config/retroarch/cores/puae_libretro.so",
             "useForeverMode": false,
             "acceptZipFiles": true,
-            "corePreferences": {},
-            "useForeverMode": false
+            "corePreferences": {}
         },
         {
             "system": "amiga1200",
