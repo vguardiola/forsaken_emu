@@ -3,3 +3,9 @@ lists/
 lists/*.txt
 roms/
 *.AppImage
+/.idea/.gitignore
+/.idea/copilot.data.migration.ask2agent.xml
+/.idea/Emulators.iml
+/.idea/git_toolbox_prj.xml
+/.idea/modules.xml
+/.idea/vcs.xml

@@ -3,12 +3,15 @@
 downloadList() {
     rm -rf ./lists
     wgetAndProgressDialog https://github.com/vguardiola/romlists/archive/refs/heads/main.zip ./lists.zip
-    7z x -bsp2 -y -o./ ./lists.zip && rm ./lists.zip && mv ./romlists-main ./lists
+    7z x -bsp2 -y -o./ ./lists.zip
+    rm -f ./lists.zip
+    mv ./romlists-main ./lists
 }
 
 generateFakeRoms() {
     local count=0
-    local total=$(ls ./lists/*.txt | wc -l)
+    local total=0
+    total=$(ls ./lists/*.txt | wc -l)
     cd lists
     for fileName in ./*.txt; do
         platformName=$(echo "${fileName%.txt}")
@@ -95,7 +98,7 @@ checkSystemApps() {
     if [ "${#neededAppsNotFound[@]}" -gt 0 ]; then
         zenity --question --text="The following applications are needed but not installed: ${neededAppsNotFound[*]}\nDo you want to install them?" --width=640 --height=480
         if [ $? -eq 0 ]; then
-           ( installCommandPerDistribution ${neededAppsNotFound[*]} )
+           ( installCommandPerDistribution "${neededAppsNotFound[*]}" )
         else
             exit 1
         fi
@@ -110,7 +113,7 @@ startDialog() {
         )
     case $choice in
         "Generate Roms")
-            downloadList | zenity --progress --title="Downloading roms list" --auto-close --percentage=0 --no-cancel --width=640 --height=220 2>/dev/null
+            downloadList
             generateFakeRoms | zenity --progress --title="Generating Roms" --auto-close --percentage=0 --no-cancel --width=640 --height=220 2>/dev/null
             startDialog
             ;;
