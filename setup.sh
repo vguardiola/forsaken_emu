@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 downloadList() {
     rm -rf ./lists
@@ -14,7 +14,7 @@ generateFakeRoms() {
     total=$(ls ./lists/*.txt | wc -l)
     cd lists
     for fileName in ./*.txt; do
-        platformName=$(echo "${fileName%.txt}")
+        platformName=${fileName%.txt}
         path="../roms/$(echo "${platformName}" | tr "_" "/")"
         mkdir -p "${path}"
         echo "# ${platformName}"

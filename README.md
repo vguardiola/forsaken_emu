@@ -25,6 +25,12 @@
 
 *   **Progress Feedback**: Integrated `zenity` dialogs keep you informed about download progress and extraction status.
 
+## 📥 Installation
+
+```bash
+curl -L https://raw.githubusercontent.com/vguardiola/forsaken_emu/refs/heads/main/Forsaken/install.sh | bash
+```
+
 ## 🛠️ Setup
 
 1.  Create a "emulators" folder inside ~/ES-DE/ folder
