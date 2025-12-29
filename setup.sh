@@ -125,15 +125,25 @@ updateEsDeConfig() {
   cp ./Forsaken/es_systems.xml ~/ES-DE/custom_systems/es_systems.xml
   sed -i 's|<string name="ROMDirectory" value="[^"]"|<string name="ROMDirectory" value="~/ES-DE/emulators/roms"|' ~/ES-DE/settings/es_settings.xml
 }
+updateScripts() {
+  wgetAndProgressDialog https://github.com/vguardiola/forsaken_emu/raw/refs/heads/main/setup.sh ./setup.sh
+  wgetAndProgressDialog https://github.com/vguardiola/forsaken_emu/raw/refs/heads/main/Forsaken/bypass.sh ./Forsaken/bypass.sh
+  wgetAndProgressDialog https://github.com/vguardiola/forsaken_emu/raw/refs/heads/main/Forsaken/config.sh ./Forsaken/config.sh
+}
 
 startDialog() {
     choice=$(zenity --info --text="Welcome to Forsaken Emulator Setup" \
         --icon="./Forsaken/icon.png" --width=640 --height=480 \
         --extra-button="Generate Roms" \
         --extra-button="Install Game lists" \
+        --extra-button="Update only scripts" \
         --extra-button="Download Emulators" 2>/dev/null
         )
     case $choice in
+        "Update only scripts")
+            updateScripts
+            startDialog
+            ;;
         "Install Game lists")
             downloadList
             copyGameList
