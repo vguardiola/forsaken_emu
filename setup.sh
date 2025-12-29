@@ -125,6 +125,7 @@ updateEsDeConfig() {
   cp ./Forsaken/es_systems.xml ~/ES-DE/custom_systems/es_systems.xml
   sed -i 's|<string name="ROMDirectory" value="[^"]"|<string name="ROMDirectory" value="~/ES-DE/emulators/roms"|' ~/ES-DE/settings/es_settings.xml
 }
+
 updateScripts() {
   wgetAndProgressDialog https://github.com/vguardiola/forsaken_emu/raw/refs/heads/main/setup.sh ./setup.sh
   wgetAndProgressDialog https://github.com/vguardiola/forsaken_emu/raw/refs/heads/main/Forsaken/bypass.sh ./Forsaken/bypass.sh
