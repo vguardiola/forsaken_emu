@@ -8,11 +8,18 @@ downloadList() {
     mv ./romlists-main ./lists
 }
 
+copyGameList() {
+    cp -R ./lists/gamelists  ~/ES-DE/gamelists
+}
+
 generateFakeRoms() {
     local count=0
     local total=0
-    total=$(ls ./lists/*.txt | wc -l)
-    cd lists
+    rm -rf ./roms
+    mkdir -p ./roms/_temp
+    mkdir -p ./roms/_forever
+    cd lists || exit
+    total=$(ls ./*.txt | wc -l)
     for fileName in ./*.txt; do
         platformName=${fileName%.txt}
         path="../roms/$(echo "${platformName}" | tr "_" "/")"
@@ -20,8 +27,13 @@ generateFakeRoms() {
         echo "# ${platformName}"
         readarray -t lines < "${fileName}"
         for game in "${lines[@]}"; do
+          if [ -n "$game" ]; then
+            url=$(echo "${game}" | awk -F'*' '{print $1}' | awk -F'=' '{print $2}')
+            url=${url% }
             game=$(echo "${game}" | awk -F '=' '{print $1}')
             touch "${path}/${game}"
+            echo -n "${url}" >> "${path}/${game}"
+          fi
         done
         count=$((count + 1))
         echo $((count * 100 / total))
@@ -79,6 +91,9 @@ installCommandPerDistribution() {
         gentoo)
             sudo emerge "$@"
             ;;
+        darwin)
+            brew install "$@"
+            ;;
         *)
             echo "Unsupported distribution"
             exit 1
@@ -105,13 +120,25 @@ checkSystemApps() {
     fi
 }
 
+updateEsDeConfig() {
+  mkdir -p ~/.config/retroarch/
+  cp ./Forsaken/es_systems.xml ~/ES-DE/custom_systems/es_systems.xml
+  sed -i 's|<string name="ROMDirectory" value="[^"]"|<string name="ROMDirectory" value="~/ES-DE/emulators/roms"|' ~/ES-DE/settings/es_settings.xml
+}
+
 startDialog() {
     choice=$(zenity --info --text="Welcome to Forsaken Emulator Setup" \
         --icon="./Forsaken/icon.png" --width=640 --height=480 \
         --extra-button="Generate Roms" \
+        --extra-button="Install Game lists" \
         --extra-button="Download Emulators" 2>/dev/null
         )
     case $choice in
+        "Install Game lists")
+            downloadList
+            copyGameList
+            startDialog
+            ;;
         "Generate Roms")
             downloadList
             generateFakeRoms | zenity --progress --title="Generating Roms" --auto-close --percentage=0 --no-cancel --width=640 --height=220 2>/dev/null
@@ -128,9 +155,5 @@ startDialog() {
 }
 
 checkSystemApps
-mkdir -p ./roms/_temp
-mkdir -p ./roms/_forever
-mkdir -p ~/.config/retroarch/
-cp ./Forsaken/es_systems.xml ~/ES-DE/custom_systems/es_systems.xml
-sed -i 's|<string name="ROMDirectory" value=""|<string name="ROMDirectory" value="~/ES-DE/emulators/roms"|' ~/ES-DE/settings/es_settings.xml
+updateEsDeConfig
 startDialog

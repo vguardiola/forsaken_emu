@@ -24,18 +24,19 @@
     *   Generates "Fake ROM" placeholders so your library looks full, even if the files aren't on disk yet.
 
 *   **Progress Feedback**: Integrated `zenity` dialogs keep you informed about download progress and extraction status.
+*   **Not included**: Some features are intentionally omitted to keep the project lightweight and focused. Also, the keys, bios, and other optional components.
 
 ## 📥 Installation
 
 ```bash
-curl -L https://raw.githubusercontent.com/vguardiola/forsaken_emu/refs/heads/main/Forsaken/install.sh | bash
+curl -L https://github.com/vguardiola/forsaken_emu/raw/refs/heads/main/install.sh | bash -C
 ```
 
 ## 🛠️ Setup
 
 1.  Create a "emulators" folder inside ~/ES-DE/ folder
 2.  Clone this repository or download the script and copy the content inside emulators folder.
-3.  Make sure you have basic dependencies installed (the script will check for `7z`, `wget`, `git`, `unzip`, `unrar`, `zenity`, `jq`).
+3.  Make sure you have basic dependencies installed (the script will check for `7z`, `wget`, `unrar`, `zenity`, `jq`).
 4.  Run the setup script:
     ```bash
     ./setup.sh
@@ -62,7 +63,7 @@ Support includes but is not limited to:
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 ## 🙏🏻 Thanks
 

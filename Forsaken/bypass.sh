@@ -3,7 +3,6 @@
 logFile="${3}/bypasss.log"
 gamePath=$1 #"~/ES-DE/roms/3do/3D Atlas (Europe).zip"
 romsDir=$2 #"~/ES-DE/roms"
-listDir="${romsDir}/../lists"
 bypassDir=$3 #"~/ES-DE/Emulators/Forsaken"
 gameName=$(basename "${gamePath}" | xargs printf '%b\n')
 platformName=$(dirname "${gamePath}" | sed "s|${romsDir}/||g" | awk -F / '{print $1}' )
@@ -11,19 +10,16 @@ downloadTempDir="${romsDir}/_temp/${platformName}/"
 downloadForeverDir="${romsDir}/_forever/${platformName}/"
 configFile="${bypassDir}/config.json"
 url=""
-size=0
 
 debug() {
- echo "$1" >> ${logFile}
+ echo "$1" >> "${logFile}"
 }
 
 findGameUrl() {
-    data=$(cd "${listDir}/" && grep -F "${gameName}" ${platformName}*.txt);
-    url=$(echo ${data} | awk -F'*' '{print $1}' | awk -F'=' '{print $2}');
+    url=$(head -n 1 < "${gamePath}");
     url=${url% }
-    size=$(echo ${data} | awk -F'*' '{print $2}' | awk -F'=' '{print $2}');
-    if [ ! -n "$url" ]; then
-        zenity --error --text="Rom not found on list, it's a progeamer problem"
+    if [ -z "$url" ]; then
+        zenity --error --text="Rom not found on list, it's a programmer problem"
         exit 1
     fi
 }
@@ -59,7 +55,7 @@ readConfigForPlatformAcceptZipFiles() {
     fi
 }
 
-readConfigForPlatformfileExtension() {
+readConfigForPlatformFileExtension() {
     if [ -f "$configFile" ]; then
         echo "$(jq -r --arg system "$platformName" '.emulators[] | select(.system == $system) | .fileExtension | if type=="array" then .[0] else . end' "$configFile")"
     fi
@@ -136,8 +132,8 @@ case $exist in
         askSaveRom
         ;;
     *)
-        findGameUrl
         cleanTempDir
+        findGameUrl
         downloadRom
         runEmulator "${downloadTempDir}${gameName}"
         askSaveRom
