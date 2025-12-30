@@ -495,7 +495,7 @@
         },
         {
             "system": "nds",
-            "command": "../retroarch.AppImage -f -L ~/.config/retroarch/cores/melonds_libretro.so",
+            "command": "../retroarch.AppImage -f -L ~/.config/retroarch/cores/melondsds_libretro.so",
             "useForeverMode": false,
             "acceptZipFiles": true,
             "corePreferences": {}
