@@ -41,7 +41,7 @@ curl -L https://github.com/vguardiola/forsaken_emu/raw/refs/heads/main/install.s
     ```bash
     ./setup.sh
     ```
-4.  Follow the on-screen prompts to download emulators and generate your game lists.
+5.  Follow the on-screen prompts to download emulators and generate your game lists.
 
 ## 📂 Structure
 
@@ -49,7 +49,6 @@ curl -L https://github.com/vguardiola/forsaken_emu/raw/refs/heads/main/install.s
 *   `Forsaken/bypass.sh`: The launcher wrapper that handles ROM logic.
 *   `Forsaken/config.sh`: The emulators config app.
 *   `Forsaken/config.json`: Configuration file defining emulator commands and system settings.
-*   `lists/`: Directory containing game databases for the "Fake ROM" generator.
 
 ## 🎮 Supported Systems
 

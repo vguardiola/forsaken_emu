@@ -16,7 +16,7 @@ debug() {
 }
 
 findGameUrl() {
-    url=$(head -n 1 < "${gamePath}");
+    url=$(cat "${gamePath//\\/}")
     url=${url% }
     if [ -z "$url" ]; then
         zenity --error --text="Rom not found on list, it's a programmer problem"
@@ -118,7 +118,7 @@ readConfigForPlatformCommand() {
 }
 
 cleanTempDir() {
-    rm -rf "${downloadTempDir}/*"
+    rm -rf "${downloadTempDir:?}/*"
 }
 
 existRom
